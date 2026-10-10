@@ -1,0 +1,748 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vowpixie | Digital Invitations Made Personal</title>
+<meta name="description" content="Beautiful digital wedding invitations, save the dates, birthday invitations and personalised invitation videos by Vowpixie.">
+
+<style>
+:root {
+  --cream:#fffaf6;
+  --pink:#f6e6e5;
+  --rose:#bd777e;
+  --dark:#392b30;
+  --muted:#7b6a6e;
+  --white:#fff;
+  --line:#efdfdc;
+  --shadow:0 12px 35px rgba(77,45,52,.08);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--cream);color:var(--dark);
+  font-family:Georgia,"Times New Roman",serif;
+}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+img,video{max-width:100%;display:block}
+.container{width:min(1160px,92%);margin:auto}
+section{padding:76px 0}
+.section-title{text-align:center;margin:0 0 14px;font-size:clamp(30px,4vw,43px);font-weight:500}
+.section-subtitle{text-align:center;color:var(--muted);line-height:1.8;max-width:650px;margin:0 auto 38px;font-family:Arial,sans-serif;font-size:14px}
+.eyebrow{text-transform:uppercase;letter-spacing:3px;font:11px Arial,sans-serif;color:var(--rose);margin-bottom:15px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:14px 23px;border-radius:3px;border:1px solid var(--rose);
+  background:var(--rose);color:white;font:12px Arial,sans-serif;
+  letter-spacing:1px;cursor:pointer;transition:.25s;
+}
+.btn:hover{background:var(--dark);border-color:var(--dark)}
+.btn-outline{background:transparent;color:var(--dark);border-color:#d9b9b8}
+.btn-outline:hover{color:white}
+header{
+  position:sticky;top:0;z-index:50;background:rgba(255,250,246,.96);
+  backdrop-filter:blur(12px);border-bottom:1px solid var(--line);
+}
+.nav{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:20px;min-height:120px;padding:10px 0;
+}
+.logo-link{display:flex;align-items:center;flex-shrink:0}
+.logo{
+  width:205px;height:112px;object-fit:contain;
+  object-position:left center;
+}
+.nav-links{display:flex;align-items:center;gap:22px;font:12px Arial,sans-serif}
+.nav-links a:hover{color:var(--rose)}
+.menu-toggle{display:none;background:none;border:0;font-size:28px;color:var(--dark);cursor:pointer}
+.hero{
+  padding:65px 0 75px;
+  background:radial-gradient(ellipse at 80% 20%,#f5e2e2 0,transparent 43%),var(--cream);
+}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:55px}
+.hero-copy h1{font-size:clamp(42px,6vw,72px);line-height:1.08;font-weight:400;margin:12px 0 22px}
+.hero-copy h1 em{color:var(--rose);font-weight:400}
+.hero-copy p{font:15px/1.9 Arial,sans-serif;color:var(--muted);max-width:500px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:27px}
+.hero-art{
+  min-height:430px;border-radius:48% 48% 5px 5px;
+  background:linear-gradient(145deg,#f1dada,#fff5ef 60%,#e8c9c8);
+  display:flex;align-items:center;justify-content:center;padding:25px;
+  position:relative;overflow:hidden;
+}
+.hero-art:before,.hero-art:after{
+  content:"";position:absolute;border:1px solid rgba(189,119,126,.35);
+  border-radius:50%;width:320px;height:320px;
+}
+.hero-art:after{width:380px;height:380px}
+.hero-logo-wrap{position:relative;z-index:2;text-align:center;width:100%}
+.hero-logo{
+  width:min(100%,420px);height:290px;object-fit:contain;
+  margin:0 auto;filter:drop-shadow(0 10px 16px rgba(65,35,42,.08));
+}
+.hero-caption{font-size:18px;font-style:italic;margin-top:12px;color:#79545a}
+.service-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:17px}
+.service-card{
+  background:#fff;border:1px solid var(--line);padding:25px 16px;text-align:center;
+  transition:.25s;min-height:145px;display:flex;flex-direction:column;justify-content:center;
+}
+.service-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.service-icon{font-size:25px;margin-bottom:13px}
+.service-card h3{font-size:17px;font-weight:400;margin:0 0 7px}
+.service-card p{font:12px/1.6 Arial,sans-serif;color:var(--muted);margin:0}
+.catalogue{background:#fff}
+.catalogue-tools{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:30px}
+.filter-btn{
+  padding:10px 15px;background:transparent;border:1px solid var(--line);
+  color:var(--muted);cursor:pointer;font:12px Arial,sans-serif;border-radius:30px;
+}
+.filter-btn.active,.filter-btn:hover{background:var(--rose);border-color:var(--rose);color:white}
+.design-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.design-card{border:1px solid var(--line);background:#fff;overflow:hidden;transition:.25s}
+.design-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.design-preview{
+  position:relative;aspect-ratio:4/5;background:#f2e6e3;
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
+}
+.design-preview img,.design-preview video{
+  width:100%;height:100%;object-fit:cover;
+}
+.design-placeholder{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  padding:25px;text-align:center;color:#8d666c;
+  background:linear-gradient(145deg,#f5e3e1,#fff7f1);
+  font-size:24px;font-style:italic;
+}
+.design-preview.has-media .design-placeholder{display:none}
+.preview-play{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:55px;height:55px;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;background:rgba(255,255,255,.91);color:#8e555f;
+  font:22px Arial,sans-serif;box-shadow:0 4px 20px #0002;pointer-events:none;
+}
+.preview-label{
+  position:absolute;bottom:13px;left:50%;transform:translateX(-50%);
+  background:rgba(54,36,40,.78);color:white;padding:8px 12px;
+  font:10px Arial,sans-serif;letter-spacing:1.5px;white-space:nowrap;
+  pointer-events:none;
+}
+.design-info{padding:19px}
+.design-info h3{font-size:21px;font-weight:400;margin:0 0 8px}
+.design-info p{font:13px/1.7 Arial,sans-serif;color:var(--muted);margin:0 0 12px}
+.design-meta{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+.design-price{color:var(--rose);font-size:18px}
+.design-category{font:10px Arial,sans-serif;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+.design-actions{display:flex;gap:8px;flex-wrap:wrap}
+.design-actions .btn{padding:11px 14px;flex:1}
+.status-message{text-align:center;color:var(--muted);font:13px Arial,sans-serif;padding:25px}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.why-card{text-align:center;padding:28px 20px}
+.why-card .icon{font-size:29px;color:var(--rose)}
+.why-card h3{font-weight:400;font-size:21px}
+.why-card p{font:13px/1.8 Arial,sans-serif;color:var(--muted)}
+.reviews{background:#f7eae8}
+.review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.review-card{background:#fff;padding:27px;border:1px solid #f0dcda}
+.stars{color:#bd8d57;letter-spacing:3px}
+.review-card h3{font-size:21px;font-weight:400;margin:15px 0 7px}
+.review-tag{color:var(--rose);font-size:13px;font-style:italic}
+.review-card p{font:13px/1.8 Arial,sans-serif;color:var(--muted)}
+.review-name{font:12px Arial,sans-serif;margin-top:20px}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center}
+.about-panel{background:#f3e1df;padding:40px}
+.about-panel .about-mark{font-size:45px;color:var(--rose)}
+.about-copy h2{font-size:39px;font-weight:400;line-height:1.2}
+.about-copy p{font:14px/1.9 Arial,sans-serif;color:var(--muted)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.step{text-align:center;padding:28px 20px;border:1px solid var(--line);background:white}
+.step-number{font-size:34px;color:var(--rose)}
+.step h3{font-weight:400;font-size:20px}
+.step p{font:13px/1.8 Arial,sans-serif;color:var(--muted)}
+.faq-list{max-width:800px;margin:auto}
+details{padding:19px 0;border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-size:18px}
+details p{font:13px/1.8 Arial,sans-serif;color:var(--muted)}
+.cta{text-align:center;background:#f2dfdd}
+.cta h2{font-size:clamp(32px,5vw,48px);font-weight:400;margin:0 0 15px}
+.cta p{font:14px/1.8 Arial,sans-serif;color:var(--muted);margin-bottom:25px}
+footer{background:#33262a;color:#fff7f2;padding:48px 0 25px}
+.footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:35px}
+.footer-logo{width:160px;height:100px;object-fit:contain;object-position:left center;background:#fffaf6;border-radius:4px;padding:5px}
+footer p,footer a{font:12px/1.9 Arial,sans-serif;color:#dfcfd0}
+footer h3{font-size:18px;font-weight:400}
+.footer-links{display:flex;flex-direction:column;gap:5px}
+.copyright{text-align:center;border-top:1px solid #5a484c;margin-top:30px;padding-top:20px;font:11px Arial,sans-serif;color:#c9b6b8}
+.whatsapp-float{
+  position:fixed;right:20px;bottom:20px;z-index:80;
+  width:56px;height:56px;border-radius:50%;background:#218c62;color:white;
+  display:flex;align-items:center;justify-content:center;font:25px Arial,sans-serif;
+  box-shadow:0 5px 18px #0002;
+}
+@media(max-width:900px){
+  .nav{min-height:100px}.logo{width:170px;height:90px}
+  .nav-links{gap:12px}.hero-grid{gap:25px}.hero-art{min-height:350px}
+  .hero-logo{height:240px}.service-grid{grid-template-columns:repeat(2,1fr)}
+  .design-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:650px){
+  section{padding:55px 0}
+  .nav{min-height:86px}.logo{width:150px;height:78px}
+  .menu-toggle{display:block}
+  .nav-links{
+    display:none;position:absolute;left:0;right:0;top:100%;background:var(--cream);
+    padding:20px 5%;border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start;
+  }
+  .nav-links.open{display:flex}
+  .hero{padding:40px 0 50px}
+  .hero-grid,.about-grid{grid-template-columns:1fr}
+  .hero-copy{text-align:center}
+  .hero-copy p{margin-left:auto;margin-right:auto}
+  .hero-actions{justify-content:center}
+  .hero-art{min-height:310px}
+  .hero-logo{height:220px;width:100%}
+  .hero-caption{font-size:16px}
+  .design-grid,.review-grid,.why-grid,.steps{grid-template-columns:1fr}
+  .service-grid{gap:10px}
+  .service-card{padding:20px 10px;min-height:130px}
+  .design-info{padding:15px}
+  .design-info h3{font-size:19px}
+  .footer-grid{grid-template-columns:1fr;gap:20px}
+  .about-panel{padding:25px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="#home" class="logo-link" aria-label="Vowpixie home">
+      <img class="logo" src="./my%20logo.jpg" alt="Vowpixie logo">
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#designs">Designs</a>
+      <a href="#about">About</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <div class="eyebrow">Made with love, made for you</div>
+      <h1>Your moments.<br><em>Your kind of magic.</em></h1>
+      <p>From dreamy wedding invitations to fun birthday videos, we turn your special moments into beautiful digital memories.</p>
+      <div class="hero-actions">
+        <a class="btn" href="#designs">EXPLORE DESIGNS</a>
+        <a class="btn btn-outline" href="https://wa.me/917082601905" target="_blank" rel="noopener">LET'S CREATE</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="hero-logo-wrap">
+        <img class="hero-logo" src="./my%20logo.jpg" alt="Vowpixie — digital invitations">
+        <div class="hero-caption">Little details, big feelings ♡</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="container">
+    <div class="eyebrow" style="text-align:center">What we create</div>
+    <h2 class="section-title">Made for your moments</h2>
+    <p class="section-subtitle">Every celebration has its own story. Let's give yours a beautiful beginning.</p>
+    <div class="service-grid">
+      <a class="service-card" href="#designs" data-service="Wedding"><div class="service-icon">♡</div><h3>Wedding</h3><p>Invitations full of love</p></a>
+      <a class="service-card" href="#designs" data-service="Save the Date"><div class="service-icon">✉</div><h3>Save the Date</h3><p>Announce your forever</p></a>
+      <a class="service-card" href="#designs" data-service="Birthday"><div class="service-icon">✧</div><h3>Birthday</h3><p>Make the day feel special</p></a>
+      <a class="service-card" href="#designs" data-service="Baby"><div class="service-icon">☁</div><h3>Baby</h3><p>Celebrate little beginnings</p></a>
+      <a class="service-card" href="#designs" data-service="Anniversary"><div class="service-icon">♥</div><h3>Anniversary</h3><p>Celebrate your journey</p></a>
+      <a class="service-card" href="#designs" data-service="Engagement"><div class="service-icon">✦</div><h3>Engagement</h3><p>A beautiful new chapter</p></a>
+      <a class="service-card" href="#designs" data-service="Haldi / Mehndi"><div class="service-icon">❋</div><h3>Haldi / Mehndi</h3><p>Colourful celebration invites</p></a>
+      <a class="service-card" href="#designs" data-service="Spiritual"><div class="service-icon">🪷</div><h3>Spiritual</h3><p>Invites for sacred moments</p></a>
+      <a class="service-card" href="#designs" data-service="Festival"><div class="service-icon">✺</div><h3>Festival</h3><p>Share festive happiness</p></a>
+      <a class="service-card" href="#designs" data-service="Digital Website"><div class="service-icon">⌘</div><h3>Digital Website</h3><p>Interactive invitation pages</p></a>
+      <a class="service-card" href="#designs" data-service="Canva Template"><div class="service-icon">▧</div><h3>Canva Template</h3><p>Editable designs for you</p></a>
+      <a class="service-card" href="#designs" data-service="Other Services"><div class="service-icon">＋</div><h3>Other Services</h3><p>Your idea, our creativity</p></a>
+    </div>
+  </div>
+</section>
+
+<section class="catalogue" id="designs">
+  <div class="container">
+    <div class="eyebrow" style="text-align:center">The invitation collection</div>
+    <h2 class="section-title">Find your favourite</h2>
+    <p class="section-subtitle">Explore the collection and choose a design that feels like you.</p>
+    <div class="catalogue-tools" id="filters">
+      <button class="filter-btn active" data-category="All">All Designs</button>
+      <button class="filter-btn" data-category="Wedding">Wedding</button>
+      <button class="filter-btn" data-category="Save the Date">Save the Date</button>
+      <button class="filter-btn" data-category="Birthday">Birthday</button>
+      <button class="filter-btn" data-category="Baby">Baby</button>
+      <button class="filter-btn" data-category="Anniversary">Anniversary</button>
+      <button class="filter-btn" data-category="Engagement">Engagement</button>
+      <button class="filter-btn" data-category="Haldi / Mehndi">Haldi / Mehndi</button>
+      <button class="filter-btn" data-category="Spiritual">Spiritual</button>
+      <button class="filter-btn" data-category="Festival">Festival</button>
+      <button class="filter-btn" data-category="Digital Website">Digital Website</button>
+      <button class="filter-btn" data-category="Canva Template">Canva Template</button>
+      <button class="filter-btn" data-category="Other Services">Other Services</button>
+    </div>
+    <div class="design-grid" id="designGrid"></div>
+    <div class="status-message" id="catalogueStatus">Loading designs...</div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="eyebrow" style="text-align:center">The Vowpixie feeling</div>
+    <h2 class="section-title">Why choose Vowpixie?</h2>
+    <p class="section-subtitle">Thoughtful designs for the moments you want to remember forever.</p>
+    <div class="why-grid">
+      <div class="why-card"><div class="icon">♡</div><h3>Made with feeling</h3><p>Designs that reflect your personality, story and celebration.</p></div>
+      <div class="why-card"><div class="icon">✧</div><h3>Beautiful details</h3><p>Carefully chosen colours, typography and little details that matter.</p></div>
+      <div class="why-card"><div class="icon">✉</div><h3>Easy to share</h3><p>Digital invitations that are simple to send to your loved ones.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews">
+  <div class="container">
+    <div class="eyebrow" style="text-align:center">Kind words</div>
+    <h2 class="section-title">Love notes from our customers</h2>
+    <p class="section-subtitle">The sweetest part is knowing our designs become part of your memories.</p>
+    <div class="review-grid">
+      <article class="review-card">
+        <div class="stars">★★★★★</div>
+        <h3>Little details, big feelings</h3>
+        <div class="review-tag">A dreamy invitation</div>
+        <p>Such a dreamy invitation! The design captured the feel of our special day so beautifully. Every detail made it feel truly ours. Thank you, Vowpixie! ♡</p>
+        <div class="review-name">Neha — Delhi</div>
+      </article>
+      <article class="review-card">
+        <div class="stars">★★★★★</div>
+        <h3>Made for your moments</h3>
+        <div class="review-tag">Just as imagined</div>
+        <p>My invitation turned out even more beautiful than I imagined! 💗</p>
+        <div class="review-name">Raman — Chandigarh</div>
+      </article>
+      <article class="review-card">
+        <div class="stars">★★★★★</div>
+        <h3>A memory to treasure</h3>
+        <div class="review-tag">Simple and elegant</div>
+        <p>Simple, elegant and exactly what I wanted. ✨</p>
+        <div class="review-name">Isha — Haryana</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container about-grid">
+    <div class="about-panel">
+      <div class="about-mark">♡</div>
+      <div class="eyebrow">A little about us</div>
+      <h2 style="font-weight:400;font-size:35px;line-height:1.25">Every invitation begins with a feeling.</h2>
+      <p style="font:14px/1.8 Arial,sans-serif;color:var(--muted)">And every feeling deserves to be celebrated.</p>
+    </div>
+    <div class="about-copy">
+      <div class="eyebrow">Welcome to Vowpixie</div>
+      <h2>More than an invitation. A little piece of your story.</h2>
+      <p>At Vowpixie, we believe that the first glimpse of a celebration should feel just as special as the day itself. We create digital invitations for weddings, birthdays, baby celebrations and all the little-big moments in life.</p>
+      <p>Whether you love minimal elegance, dreamy romance or a playful design, let's create something that feels personal to you.</p>
+      <a class="btn" href="https://wa.me/917082601905" target="_blank" rel="noopener">TELL US YOUR IDEA</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="eyebrow" style="text-align:center">Simple and personal</div>
+    <h2 class="section-title">How to order</h2>
+    <p class="section-subtitle">A few simple steps to your special invitation.</p>
+    <div class="steps">
+      <div class="step"><div class="step-number">01</div><h3>Choose a design</h3><p>Explore our collection and pick the design you love.</p></div>
+      <div class="step"><div class="step-number">02</div><h3>Share your details</h3><p>Message us your requirements and send your payment confirmation.</p></div>
+      <div class="step"><div class="step-number">03</div><h3>Receive your invite</h3><p>Your invitation is prepared and shared with you digitally.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="eyebrow" style="text-align:center">A few helpful details</div>
+    <h2 class="section-title">Frequently asked questions</h2>
+    <p class="section-subtitle">Everything you might want to know before ordering.</p>
+    <div class="faq-list">
+      <details><summary>How do I place an order?</summary><p>Choose a design and contact us through WhatsApp. We will guide you through the details and payment process.</p></details>
+      <details><summary>Can I request a customised design?</summary><p>Yes! Send us your idea, preferred style and event details. We will discuss the options with you.</p></details>
+      <details><summary>How will I receive my invitation?</summary><p>Your completed digital invitation will be shared with you online.</p></details>
+      <details><summary>How long does delivery take?</summary><p>Delivery time depends on the design and customisation. We will confirm the expected delivery time when you order.</p></details>
+      <details><summary>Can I request a design that is not listed?</summary><p>Absolutely. Choose Other Services or message us a screenshot/reference of the style you want.</p></details>
+      <details><summary>Are all designs editable in Canva?</summary><p>Only designs specifically listed as Canva templates are intended to be editable. Please confirm before ordering.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="container">
+    <div class="eyebrow">Let's make something memorable</div>
+    <h2>Your story deserves a beautiful invite.</h2>
+    <p>Have a design in mind? Tell us about your special moment.</p>
+    <a class="btn" href="https://wa.me/917082601905" target="_blank" rel="noopener">CHAT WITH US ON WHATSAPP</a>
+    <a class="btn btn-outline" href="https://www.instagram.com/vowpixie/" target="_blank" rel="noopener" style="margin-left:8px">FOLLOW ON INSTAGRAM</a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img class="footer-logo" src="./my%20logo.jpg" alt="Vowpixie logo">
+        <p>Little details, big feelings.<br>Digital invitations made personal.</p>
+      </div>
+      <div>
+        <h3>Explore</h3>
+        <div class="footer-links">
+          <a href="#services">Our Services</a>
+          <a href="#designs">Design Collection</a>
+          <a href="#about">Our Story</a>
+          <a href="#reviews">Customer Love</a>
+        </div>
+      </div>
+      <div>
+        <h3>Get in touch</h3>
+        <div class="footer-links">
+          <a href="https://wa.me/917082601905" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="https://www.instagram.com/vowpixie/" target="_blank" rel="noopener">Instagram @vowpixie</a>
+        </div>
+        <p>For orders, custom designs and questions, send us a message.</p>
+      </div>
+    </div>
+    <div class="copyright">© <span id="year"></span> Vowpixie. Made with love ♡</div>
+  </div>
+</footer>
+
+<a class="whatsapp-float" href="https://wa.me/917082601905" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">✆</a>
+
+<script>
+/* Supabase connection */
+const SUPABASE_URL = "https://rzsukwkwmnnwxkxvbjtf.supabase.co";
+const SUPABASE_KEY = "sb_publishable_wGf4XKb79F9mFNJ91SZm6Q_bO5aV43X";
+
+const TABLE_URL =
+  SUPABASE_URL + "/rest/v1/designs?select=id,created_at,name,design_id,category,type,price,link,image_url,video_url,description&order=created_at.desc";
+
+const designGrid = document.getElementById("designGrid");
+const catalogueStatus = document.getElementById("catalogueStatus");
+let allDesigns = [];
+let activeCategory = "All";
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+document.getElementById("menuToggle").addEventListener("click", () => {
+  document.getElementById("navLinks").classList.toggle("open");
+});
+document.querySelectorAll("#navLinks a").forEach(a => {
+  a.addEventListener("click", () => document.getElementById("navLinks").classList.remove("open"));
+});
+
+/* Safe HTML text */
+function escapeHTML(value) {
+  return String(value ?? "").replace(/[&<>"']/g, char => ({
+    "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;"
+  })[char]);
+}
+function safeURL(value) {
+  try {
+    const url = new URL(String(value || "").trim(), window.location.href);
+    if (["http:", "https:"].includes(url.protocol)) return url.href;
+  } catch (e) {}
+  return "";
+}
+function normalise(value) {
+  return String(value || "").trim().toLowerCase();
+}
+
+/* Detect YouTube links and create a thumbnail automatically */
+function getYouTubeId(value) {
+  try {
+    const url = new URL(value);
+    const host = url.hostname.replace(/^www\./, "");
+    if (host === "youtu.be") return url.pathname.split("/").filter(Boolean)[0] || "";
+    if (host.endsWith("youtube.com")) {
+      if (url.pathname === "/watch") return url.searchParams.get("v") || "";
+      const match = url.pathname.match(/^\/(shorts|embed|live)\/([^/?]+)/);
+      if (match) return match[2];
+    }
+  } catch (e) {}
+  return "";
+}
+function getYouTubeThumbnail(value) {
+  const id = getYouTubeId(value);
+  return id ? "https://img.youtube.com/vi/" + encodeURIComponent(id) + "/hqdefault.jpg" : "";
+}
+function isYouTube(value) {
+  return Boolean(getYouTubeId(value));
+}
+function isVideo(item) {
+  const type = normalise(item.type);
+  const url = String(item.video_url || item.link || "").toLowerCase();
+  return type.includes("video") || isYouTube(url) ||
+    /\.(mp4|webm|mov|m4v)(\?|#|$)/i.test(url);
+}
+function isDirectVideo(value) {
+  return /\.(mp4|webm|ogv|m4v)(\?|#|$)/i.test(String(value || ""));
+}
+function getDesignLink(item) {
+  return safeURL(item.video_url) || safeURL(item.link);
+}
+function getImageLink(item) {
+  return safeURL(item.image_url);
+}
+function formatPrice(price) {
+  if (price === null || price === undefined || String(price).trim() === "") return "Contact for price";
+  const raw = String(price).trim();
+  if (/^(₹|rs\.?|inr)/i.test(raw)) return raw;
+  if (/^\d+(\.\d+)?$/.test(raw)) return "₹" + raw;
+  return raw;
+}
+
+/*
+  If image_url is empty and the video is a directly accessible MP4/WebM,
+  try to capture its first frame in the browser.
+
+  Important: cross-origin video hosts must allow CORS for canvas capture.
+  If the host blocks CORS, a thumbnail cannot be extracted by this method.
+*/
+function captureVideoFirstFrame(videoURL, imageElement, placeholder) {
+  const video = document.createElement("video");
+  video.muted = true;
+  video.playsInline = true;
+  video.preload = "metadata";
+  video.crossOrigin = "anonymous";
+  video.src = videoURL;
+
+  let finished = false;
+  const cleanUp = () => {
+    video.removeAttribute("src");
+    video.load();
+  };
+  const showPlaceholder = () => {
+    if (finished) return;
+    finished = true;
+    imageElement.style.display = "none";
+    placeholder.style.display = "flex";
+    cleanUp();
+  };
+
+  video.addEventListener("error", showPlaceholder, { once:true });
+
+  video.addEventListener("loadedmetadata", () => {
+    try {
+      const duration = Number(video.duration);
+      if (!Number.isFinite(duration) || duration <= 0) {
+        showPlaceholder();
+        return;
+      }
+      video.currentTime = Math.min(0.1, duration / 2);
+    } catch (e) {
+      showPlaceholder();
+    }
+  }, { once:true });
+
+  video.addEventListener("seeked", () => {
+    if (finished) return;
+    try {
+      const canvas = document.createElement("canvas");
+      canvas.width = video.videoWidth || 640;
+      canvas.height = video.videoHeight || 800;
+      const context = canvas.getContext("2d");
+      context.drawImage(video, 0, 0, canvas.width, canvas.height);
+      const dataURL = canvas.toDataURL("image/jpeg", 0.82);
+      imageElement.onload = () => {
+        if (finished) return;
+        finished = true;
+        imageElement.style.display = "block";
+        placeholder.style.display = "none";
+        imageElement.closest(".design-preview").classList.add("has-media");
+        cleanUp();
+      };
+      imageElement.onerror = showPlaceholder;
+      imageElement.src = dataURL;
+    } catch (e) {
+      // Browser security/CORS can prevent drawing the video to canvas.
+      showPlaceholder();
+    }
+  }, { once:true });
+
+  video.load();
+}
+
+function renderDesigns() {
+  const filtered = activeCategory === "All"
+    ? allDesigns
+    : allDesigns.filter(item => normalise(item.category) === normalise(activeCategory));
+
+  designGrid.innerHTML = "";
+
+  if (!filtered.length) {
+    catalogueStatus.textContent = allDesigns.length
+      ? "No designs in this category yet. Please check back soon."
+      : "No designs available yet. Please check back soon.";
+    catalogueStatus.style.display = "block";
+    return;
+  }
+
+  catalogueStatus.style.display = "none";
+
+  filtered.forEach((item, index) => {
+    const name = escapeHTML(item.name || item.design_id || "Our Design");
+    const category = escapeHTML(item.category || "Invitation");
+    const description = escapeHTML(item.description || "A beautiful design for your special moment.");
+    const price = escapeHTML(formatPrice(item.price));
+    const link = getDesignLink(item);
+    const videoSource = safeURL(item.video_url) || (isDirectVideo(item.link) ? safeURL(item.link) : "");
+    const imageURL = getImageLink(item);
+    const video = isVideo(item);
+    const youtubeThumbnail = getYouTubeThumbnail(item.video_url || item.link);
+    const thumbnailURL = imageURL || youtubeThumbnail;
+
+    const card = document.createElement("article");
+    card.className = "design-card";
+    card.dataset.category = item.category || "";
+
+    card.innerHTML = `
+      <div class="design-preview">
+        <div class="design-placeholder">${name}</div>
+        <img alt="${name} preview" style="display:none">
+        ${video ? '<div class="preview-play">▶</div><div class="preview-label">WATCH PREVIEW</div>' : ""}
+      </div>
+      <div class="design-info">
+        <div class="design-meta">
+          <span class="design-category">${category}</span>
+          <span class="design-price">${price}</span>
+        </div>
+        <h3>${name}</h3>
+        <p>${description}</p>
+        <div class="design-actions">
+          ${link ? `<a class="btn" href="${escapeHTML(link)}" target="_blank" rel="noopener">VIEW DESIGN ↗</a>` : ""}
+          <a class="btn btn-outline order-btn" href="#" data-design="${name.replace(/&amp;/g, "&")}" data-category="${category}" data-price="${price}">ORDER NOW</a>
+        </div>
+      </div>
+    `;
+
+    const preview = card.querySelector(".design-preview");
+    const image = preview.querySelector("img");
+    const placeholder = preview.querySelector(".design-placeholder");
+
+    image.addEventListener("load", () => {
+      image.style.display = "block";
+      placeholder.style.display = "none";
+      preview.classList.add("has-media");
+    });
+
+    image.addEventListener("error", () => {
+      image.style.display = "none";
+      preview.classList.remove("has-media");
+
+      // A bad/missing image_url? Try a YouTube thumbnail next.
+      if (image.dataset.fallbackTried !== "yes" && youtubeThumbnail &&
+          image.src !== youtubeThumbnail) {
+        image.dataset.fallbackTried = "yes";
+        image.src = youtubeThumbnail;
+        return;
+      }
+
+      // If there's no usable image but a direct video exists, capture its first frame.
+      if (videoSource && isDirectVideo(videoSource) && image.dataset.frameTried !== "yes") {
+        image.dataset.frameTried = "yes";
+        captureVideoFirstFrame(videoSource, image, placeholder);
+        return;
+      }
+
+      placeholder.style.display = "flex";
+    });
+
+    if (thumbnailURL) {
+      image.src = thumbnailURL;
+    } else if (videoSource && isDirectVideo(videoSource)) {
+      captureVideoFirstFrame(videoSource, image, placeholder);
+    } else {
+      placeholder.style.display = "flex";
+    }
+
+    const orderBtn = card.querySelector(".order-btn");
+    orderBtn.addEventListener("click", event => {
+      event.preventDefault();
+      const designName = item.name || item.design_id || "Selected design";
+      const message = `Hi Vowpixie! I would like to order this design:\nDesign: ${designName}\nCategory: ${item.category || "Invitation"}\nPrice: ${formatPrice(item.price)}\nPlease share the next steps.`;
+      window.open("https://wa.me/917082601905?text=" + encodeURIComponent(message), "_blank", "noopener");
+    });
+
+    designGrid.appendChild(card);
+  });
+}
+
+async function loadDesigns() {
+  catalogueStatus.style.display = "block";
+  catalogueStatus.textContent = "Loading designs...";
+
+  try {
+    const response = await fetch(TABLE_URL, {
+      method:"GET",
+      headers:{
+        "apikey":SUPABASE_KEY,
+        "Authorization":"Bearer " + SUPABASE_KEY,
+        "Content-Type":"application/json"
+      }
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error("Supabase returned " + response.status + ": " + errorText);
+    }
+
+    const data = await response.json();
+    allDesigns = Array.isArray(data) ? data : [];
+    renderDesigns();
+  } catch (error) {
+    console.error("Could not load Vowpixie designs:", error);
+    catalogueStatus.textContent =
+      "Designs could not be loaded right now. Please try again later or message us on WhatsApp.";
+  }
+}
+
+/* Category filters */
+document.querySelectorAll(".filter-btn").forEach(button => {
+  button.addEventListener("click", () => {
+    document.querySelectorAll(".filter-btn").forEach(btn => btn.classList.remove("active"));
+    button.classList.add("active");
+    activeCategory = button.dataset.category || "All";
+    renderDesigns();
+  });
+});
+
+/* Service tiles select their matching category */
+document.querySelectorAll("[data-service]").forEach(service => {
+  service.addEventListener("click", () => {
+    activeCategory = service.dataset.service || "All";
+    document.querySelectorAll(".filter-btn").forEach(btn => {
+      btn.classList.toggle("active", btn.dataset.category === activeCategory);
+    });
+    renderDesigns();
+  });
+});
+
+loadDesigns();
+</script>
+</body>
+</html>
